@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="white">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
         <meta name="twitter:image" content="{{ site.url }}{{ site.seo.default_image }}" />
         <meta name="twitter:site" content="@{{ site.seo.twitter.username }}" />
     </head>
-    <body class="bg-light text-dark">
+    <body>
         <div class="container my-5 px-3" style="max-width: 1000px;">
             {{ content }}
         </div>
@@ -31,32 +31,41 @@
         <script>
             const darkModeToggle = document.getElementById('dark-mode-toggle');
             const darkModeIcon = document.getElementById('dark-mode-icon');
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-            const currentTheme = localStorage.getItem('theme');
-            darkModeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('bg-dark');
-                document.body.classList.toggle('text-light');
-                document.body.classList.toggle('bg-light');
-                document.body.classList.toggle('text-dark');
-                if (document.body.classList.contains('bg-dark')) {
-                    darkModeIcon.classList.remove('fa-moon');
-                    darkModeIcon.classList.add('fa-sun');
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+
+            const getPreferredTheme = () => {
+                const storedTheme = getStoredTheme()
+                if (storedTheme) {
+                    return storedTheme
+                }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto') {
+                    document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
                 } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+                if (theme === 'dark') {
                     darkModeIcon.classList.remove('fa-sun');
                     darkModeIcon.classList.add('fa-moon');
+                } else {
+                    darkModeIcon.classList.remove('fa-moon');
+                    darkModeIcon.classList.add('fa-sun');
                 }
-                let theme = document.body.classList.contains('bg-dark') ? 'dark' : 'light';
-                localStorage.setItem('theme', theme);
-            });
-            if (prefersDarkScheme.matches && !currentTheme || currentTheme === 'dark') {
-                document.body.classList.toggle('bg-dark');
-                document.body.classList.toggle('text-light');
-                document.body.classList.toggle('bg-light');
-                document.body.classList.toggle('text-dark');
-                darkModeIcon.classList.remove('fa-moon');
-                darkModeIcon.classList.add('fa-sun');
-                localStorage.setItem('theme', "dark");
             }
+
+            setTheme(getPreferredTheme());
+
+            darkModeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+                setStoredTheme(newTheme);
+            });
          </script>
 
         <!-- JS -->
