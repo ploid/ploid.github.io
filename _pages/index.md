@@ -1,7 +1,8 @@
 ---
 layout: default
-title: Ploid AI Biotech
+title: Leading Innovation in AI and Biotechnology
 permalink: /
+description: Ploid AI Biotech pioneers the future of biotechnology with advanced AI, revolutionizing agriculture, healthcare, and environmental sustainability. Join us in leading the next wave of biotech innovation.
 ---
 
 ## Ploid

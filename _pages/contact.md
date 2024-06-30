@@ -2,6 +2,7 @@
 layout: default
 title: Contact
 permalink: /contact
+description: Contact Ploid AI Biotech for general inquiries, job applications, and collaborations. Join us in leading the next wave of biotech innovation.
 ---
 
 ## Contact Us

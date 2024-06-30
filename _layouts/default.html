@@ -23,9 +23,21 @@
         <meta name="twitter:site" content="@{{ site.seo.twitter.username }}" />
     </head>
     <body>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-41YFF2XT43"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-41YFF2XT43');
+        </script>
+
+        <!-- Content -->
         <div class="container my-5 px-3" style="max-width: 1000px;">
             {{ content }}
         </div>
+
         <!-- Dark Mode -->
         <button id="dark-mode-toggle" class="btn btn-outline-secondary position-fixed top-0 end-0 m-3"><span id="dark-mode-icon" class="fa fa-moon"></span></button>
         <script>
