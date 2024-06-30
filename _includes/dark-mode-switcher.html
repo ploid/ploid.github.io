@@ -1,0 +1,41 @@
+<!-- Dark Mode -->
+<button id="dark-mode-toggle" class="btn btn-outline-secondary position-fixed top-0 end-0 m-3"><span id="dark-mode-icon" class="fa fa-moon"></span></button>
+<script>
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeIcon = document.getElementById('dark-mode-icon');
+
+    const getStoredTheme = () => localStorage.getItem('theme');
+    const setStoredTheme = theme => localStorage.setItem('theme', theme);
+
+    const getPreferredTheme = () => {
+        const storedTheme = getStoredTheme()
+        if (storedTheme) {
+            return storedTheme
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    const setTheme = theme => {
+        if (theme === 'auto') {
+            document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        } else {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+        }
+        if (theme === 'dark') {
+            darkModeIcon.classList.remove('fa-sun');
+            darkModeIcon.classList.add('fa-moon');
+        } else {
+            darkModeIcon.classList.remove('fa-moon');
+            darkModeIcon.classList.add('fa-sun');
+        }
+    }
+
+    setTheme(getPreferredTheme());
+
+    darkModeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+        setStoredTheme(newTheme);
+    });
+</script>

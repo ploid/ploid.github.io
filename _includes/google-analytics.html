@@ -1,0 +1,68 @@
+<!-- Google Analytics Consent Grant -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500,
+    });
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics.google }}');
+
+    function allConsentGranted() {
+        gtag('consent', 'update', {
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'ad_storage': 'granted',
+        'analytics_storage': 'granted'
+        });
+        localStorage.setItem('consent', 'granted');
+        const consentBanner = document.getElementById('consent-banner');
+        consentBanner.remove();
+    }
+
+    function allConsentDenied() {
+        gtag('consent', 'update', {
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied'
+        });
+        localStorage.setItem('consent', 'denied');
+        const consentBanner = document.getElementById('consent-banner');
+        consentBanner.remove();
+    }
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics.google }}');
+</script>
+
+<!-- Constent banner -->
+<div id="consent-banner" class="position-fixed bottom-0 end-0 w-100" style="display: none;">
+    <div class="alert alert-secondary mb-0 p-1" role="alert">
+        <div class="container px-3" style="max-width: 1000px;">
+            We can <a href="/privacy-policy" class="link-body-emphasis link-underline link-underline-opacity-0">use</a> cookies to improve your experience.
+            You may <a style="cursor: pointer" class="link-body-emphasis link-underline link-underline-opacity-0" onclick="allConsentGranted();">accept</a> or <a style="cursor: pointer" class="link-body-emphasis link-underline link-underline-opacity-0" onclick="allConsentDenied();">deny</a> consent.
+        </div>
+    </div>
+</div>
+<script>
+    window.addEventListener('load', function(){
+        const consent = localStorage.getItem('consent');
+        const consentBanner = document.getElementById('consent-banner');
+        if (!consent) {
+            consentBanner.style.display = 'block';
+        } else {
+            consentBanner.remove();
+        }
+    });
+</script>

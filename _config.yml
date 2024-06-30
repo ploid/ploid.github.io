@@ -32,3 +32,7 @@ seo:
   default_image: /assets/images/default-og-image.png
   twitter:
     username: ploid
+
+# Analytics
+analytics:
+  google: G-41YFF2XT43
