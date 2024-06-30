@@ -1,0 +1,34 @@
+title: Ploid AI Biotech
+email: contact@ploid.ai
+description: >- # this means to ignore newlines until "baseurl:"
+  Ploid is revolutionizing biotechnology with cutting-edge AI solutions.
+baseurl: "" # the subpath
+url: "https://ploid.ai" # the base hostname & protocol
+
+# Configurations
+permalink: pretty
+markdown: kramdown
+theme: minima
+paginate: 5
+paginate_path: "/page:num/"
+
+# Site settings
+emails:
+  jobs: jobs@ploid.ai
+  contact: contact@ploid.ai
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Include the directores
+include:
+  - _pages
+  - robots.txt
+
+# SEO settings
+seo:
+  default_image: /assets/images/default-og-image.png
+  twitter:
+    username: ploid
