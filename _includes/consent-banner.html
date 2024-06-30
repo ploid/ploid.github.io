@@ -1,0 +1,19 @@
+<div id="consent-banner" class="position-fixed bottom-0 end-0 w-100" style="display: none;">
+    <div class="alert alert-secondary mb-0 p-1" role="alert">
+        <div class="container px-3" style="max-width: 1000px;">
+            We can <a href="/privacy-policy" class="link-body-emphasis link-underline link-underline-opacity-0">use</a> cookies to improve your experience.
+            You may <a style="cursor: pointer" class="link-body-emphasis link-underline link-underline-opacity-0" onclick="allConsentGranted();">accept</a> or <a style="cursor: pointer" class="link-body-emphasis link-underline link-underline-opacity-0" onclick="allConsentDenied();">deny</a> consent.
+        </div>
+    </div>
+</div>
+<script>
+    window.addEventListener('load', function(){
+        const consent = localStorage.getItem('consent');
+        const consentBanner = document.getElementById('consent-banner');
+        if (!consent) {
+            consentBanner.style.display = 'block';
+        } else {
+            consentBanner.remove();
+        }
+    });
+</script>
