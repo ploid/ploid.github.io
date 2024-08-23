@@ -12,4 +12,4 @@ For those interested in joining our company, please send your resume and a brief
 
 For general inquiries and comms, please contact and we will get back to you as soon as possible: <a href="mailto:{{ site.emails.contact }}" class="link-body-emphasis link-underline link-underline-opacity-0">{{ site.emails.contact }}</a>
 
-<a href="{{ site.baseurl }}/" class="link-body-emphasis link-underline link-underline-opacity-0">Back</a>
+<a href="/" class="link-body-emphasis link-underline link-underline-opacity-0">Back</a>

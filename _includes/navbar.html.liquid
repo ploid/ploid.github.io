@@ -29,14 +29,15 @@
         </li>
         <!-- Buttons in the list (for collapsed navbar) -->
         <li class="nav-item d-lg-none">
-          <a class="nav-link" href="{{ site.app }}" target="_blank">Sign In <i class="fa-solid fa-xs fa-up-right-from-square"></i></a>
+          <!-- <a class="nav-link" href="{{ site.app }}" target="_blank">Sign In <i class="fa-solid fa-xs fa-up-right-from-square"></i></a> -->
+          <a class="nav-link" href="/sign-in">Sign In <i class="fa-solid fa-xs fa-up-right-from-square"></i></a>
         </li>
         <li class="nav-item d-lg-none">
           <a class="nav-link{% if page.active == "sign-up" %} active{% endif %}" href="/sign-up">Try Now</a>
         </li>
       </ul>
       <!-- Buttons outside the list (for expanded navbar) -->
-      <form class="d-none d-lg-flex ms-2" onsubmit="window.open('{{ site.app }}', '_blank'); return false;">
+      <form class="d-none d-lg-flex ms-2" action="/sign-in"> <!-- onsubmit="window.open('{{ site.app }}', '_blank'); return false;"> -->
         <button class="btn ploid-hover-up" type="submit">Sign In <i class="fa-solid fa-xs fa-up-right-from-square"></i></button>
       </form>
       <form class="d-none d-lg-flex ms-2" action="/sign-up">
