@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary ploid-navbar">
+  <div class="container">
+    <!-- Navbar title -->
+    <a class="navbar-brand d-flex align-items-center py-0"
+      {% if page.active == "home" %}href="#"{% else %}href="/"{% endif %}>
+        <img src="/assets/images/logo.svg" alt="Ploid" width="40" height="40">
+        <span class="h3 mb-0 ms-2">Ploid</span>
+    </a>
+    
+    <!-- Navbar toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link{% if page.active == "home" %} active{% endif %}" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled{% if page.active == "blog" %} active{% endif %}" href="/blog">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled{% if page.active == "pricing" %} active{% endif %}" href="/pricing">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if page.active == "contact" %} active{% endif %}" href="/contact">Contact</a>
+        </li>
+        <!-- Buttons in the list (for collapsed navbar) -->
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" href="{{ site.app }}" target="_blank">Sign In <i class="fa-solid fa-xs fa-up-right-from-square"></i></a>
+        </li>
+        <li class="nav-item d-lg-none">
+          <a class="nav-link{% if page.active == "sign-up" %} active{% endif %}" href="/sign-up">Try Now</a>
+        </li>
+      </ul>
+      <!-- Buttons outside the list (for expanded navbar) -->
+      <form class="d-none d-lg-flex ms-2" onsubmit="window.open('{{ site.app }}', '_blank'); return false;">
+        <button class="btn ploid-hover-up" type="submit">Sign In <i class="fa-solid fa-xs fa-up-right-from-square"></i></button>
+      </form>
+      <form class="d-none d-lg-flex ms-2" action="/sign-up">
+        <button class="btn btn-success ploid-hover-up{% if page.active == "sign-up" %} active{% endif %}" type="submit">Try Now</button>
+      </form>
+    </div>
+  </div>
+</nav>

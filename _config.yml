@@ -4,7 +4,9 @@ description: >- # this means to ignore newlines until "baseurl:"
   Ploid is revolutionizing biotechnology with cutting-edge AI solutions.
 baseurl: "" # the subpath
 url: "https://ploid.ai" # the base hostname & protocol
+app: "https://app.ploid.ai" # the app URL
 icon: /assets/images/logo.svg
+css: /assets/css/style.css
 
 # Configurations
 permalink: pretty
@@ -32,7 +34,9 @@ include:
 seo:
   default_image: /assets/images/default-og-image.png
   twitter:
-    username: ploid
+    username: PloidAI
+  linkedin:
+    username: ploid-ai
 
 # Analytics
 analytics:
