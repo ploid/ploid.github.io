@@ -7,6 +7,10 @@ body {
     min-height: 100vh;
 }
 
+.ploid-container {
+    padding-top: 70px;
+}
+
 /* Navbar */
 .ploid-navbar {
     backdrop-filter: blur(8px);
@@ -24,5 +28,9 @@ body {
 
 /* Home */
 .hero-section {
+    height: 100vh;
+}
+
+.featured-section {
     height: 100vh;
 }

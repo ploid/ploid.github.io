@@ -19,7 +19,7 @@
         {% include consent-banner.html %}
         {% include navbar.html.liquid %}
 
-        <div class="container" {% if page.active != "home" %}style="padding-top: 70px;"{% endif %}>
+        <div{% if page.active != "home" %} class="container ploid-container"{% endif %}>
             {{ content }}
         </div>
 
